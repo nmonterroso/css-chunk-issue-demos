@@ -37,9 +37,7 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                    }
+                    'css-loader',
                 ]
             }
         ],
@@ -52,8 +50,8 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin(),
         new CopyWebpackPlugin([{
-            from: `${__dirname}/src/index.html`,
-            to: buildPath
+            from: `${__dirname}/src/index-override.html`,
+            to: `${buildPath}/index.html`
         }])
     ],
 };

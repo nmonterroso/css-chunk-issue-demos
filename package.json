@@ -22,6 +22,7 @@
     "react-dom": "^16.3.2"
   },
   "scripts": {
-    "start": "webpack-serve ./webpack.config.js"
+    "override-demo": "webpack-serve ./webpack.override.js",
+    "combine-demo": "webpack-serve ./webpack.combine.js"
   }
 }
