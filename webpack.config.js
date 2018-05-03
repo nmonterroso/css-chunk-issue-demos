@@ -2,7 +2,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const buildPath = `${__dirname}/dist`;
-const publicPath = '/';
 
 module.exports = {
     mode: 'development',
@@ -30,7 +29,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['env', 'react'],
-                        plugins: ['transform-class-properties']
+                        plugins: ['transform-class-properties', 'syntax-dynamic-import',]
                     },
                 }]
             },
