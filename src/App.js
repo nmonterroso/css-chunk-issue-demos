@@ -9,22 +9,22 @@ class App extends React.Component {
         componentB: false,
     };
 
-    showNext = () => {
-        if (!this.state.componentA) {
-            import(
-                /* webpackChunkName: "ComponentA" */
-                './ComponentA'
+    showA = () => {
+        import(
+            /* webpackChunkName: "ComponentA" */
+            './ComponentA'
             ).then((module) => {
-                this.setState({ componentA: module.default });
-            });
-        } else if (!this.state.componentB) {
-            import(
-                /* webpackChunkName: "ComponentB" */
-                './ComponentB'
-                ).then((module) => {
-                this.setState({ componentB: module.default });
-            });
-        }
+            this.setState({ componentA: module.default });
+        });
+    };
+
+    showB = () => {
+        import(
+            /* webpackChunkName: "ComponentB" */
+            './ComponentB'
+            ).then((module) => {
+            this.setState({ componentB: module.default });
+        });
     };
 
     render() {
@@ -42,16 +42,24 @@ class App extends React.Component {
 
         return (
             <div>
+                <div>
+                    <button
+                        onClick={this.showA}
+                        disabled={!!this.state.componentA}
+                    >
+                        Load ComponentA
+                    </button>
+                    <button
+                        onClick={this.showB}
+                        disabled={!!this.state.componentB}
+                    >
+                        Load ComponentB
+                    </button>
+                </div>
                 <span>Span 1</span>
                 <p>
                     <span>Span 2</span>
                 </p>
-                <button
-                    onClick={this.showNext}
-                    disabled={!!this.state.componentB}
-                >
-                    Show next
-                </button>
                 {a}
                 {b}
             </div>
